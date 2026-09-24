@@ -1,0 +1,14 @@
+services:
+  - type: worker
+    name: io-dark-bot-worker
+    env: python
+    region: singapore # เลือก Region ใกล้ที่สุดเพื่อ Latency ต่ำ
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: TWITTER_BEARER_TOKEN
+        sync: false # ให้กรอกใน UI ของ Render
+      - key: PYTHON_VERSION
+        value: 3.12.0
+        
